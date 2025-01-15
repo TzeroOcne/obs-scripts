@@ -155,22 +155,22 @@ def screenshot_taken(data):
     )
 
 def front_end_callback(data: int):
-    match data:
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_STARTED.value:
+    match OBSFrontendEvent(data):
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_STARTED:
             output_start(data)
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_STOPPED.value:
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_STOPPED:
             output_stop(data)
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_PAUSED.value:
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_PAUSED:
             output_pause(data)
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_UNPAUSED.value:
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_RECORDING_UNPAUSED:
             output_unpause(data)
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STARTED.value:
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STARTED:
             replay_buffer_start(data)
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STOPPED.value:
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STOPPED:
             replay_buffer_stop(data)
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_REPLAY_BUFFER_SAVED.value:
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_REPLAY_BUFFER_SAVED:
             replay_buffer_save(data)
-        case OBSFrontendEvent.OBS_FRONTEND_EVENT_SCREENSHOT_TAKEN.value:
+        case OBSFrontendEvent.OBS_FRONTEND_EVENT_SCREENSHOT_TAKEN:
             screenshot_taken(data)
         case _: pass
 
